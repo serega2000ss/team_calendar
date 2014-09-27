@@ -48,4 +48,5 @@ gem 'rspec-rails', '~> 3.1.0', :group => [:test, :development]
 group :test do
   gem 'factory_girl_rails', '~> 4.4.1'
   gem 'capybara', '~> 2.4.1'
+  gem 'annotate', '~> 2.6.5'
 end
