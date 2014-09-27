@@ -1,0 +1,14 @@
+<!-- Device notifications -->
+<% if notice %>
+  <div class="alert alert-info" role="alert"><%= notice %></div>
+<% end %>
+<% if alert %>
+  <div class="alert alert-danger" role="alert"><%= alert %></div>
+<% end %>
+
+<!-- Flash notifications -->
+<% [:success, :info, :warning, :danger].each do |alert_type| %>
+  <% if flash[alert_type] %>
+    <div class="alert alert-<%= alert_type %>" role="alert"><%= flash[alert_type] %></div>
+  <% end %>
+<% end %>
