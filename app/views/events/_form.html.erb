@@ -1,0 +1,32 @@
+<% if event.errors.any? %>
+  <p class="text-danger">Please fix all errors to proceed</p>
+  <ul class="errors">
+    <% event.errors.full_messages.each do |msg| %>
+      <li class="text-danger"><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for event, html: { role: 'form' } do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :event_type %>
+    <%= f.select :event_type, EventType.all.collect {|a| [a.title, a.id]}, {}, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :due_date %>
+    <%= f.text_field :due_date, class: 'form-control datepicker' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: 'form-control' %>
+  </div>
+
+  <%= f.submit nil, class: 'btn btn-default' %>
+<% end %>
