@@ -10,10 +10,46 @@
 admin = User.find_or_create_by(email: 'admin@mail.com')
 admin.update_attributes(
     :full_name => 'Admin',
-    :email => 'admin@mail.com',
     :password => '1q2w3e4r',
     :password_confirmation => '1q2w3e4r',
     :admin => true
+)
+
+
+#Users
+user = User.find_or_create_by(email: 'obi_wan@republic.com')
+user.update_attributes(
+    :full_name => 'Obi Wan',
+    :password => '1q2w3e4r',
+    :password_confirmation => '1q2w3e4r',
+)
+
+user = User.find_or_create_by(email: 'han_solo@rebels.com')
+user.update_attributes(
+    :full_name => 'Han Solo',
+    :password => '1q2w3e4r',
+    :password_confirmation => '1q2w3e4r',
+)
+
+user = User.find_or_create_by(email: 'r2d2@rebels.com')
+user.update_attributes(
+    :full_name => 'R2D2',
+    :password => '1q2w3e4r',
+    :password_confirmation => '1q2w3e4r',
+)
+
+user = User.find_or_create_by(email: 'darth_vader@empire.org')
+user.update_attributes(
+    :full_name => 'Darth Vader',
+    :password => '1q2w3e4r',
+    :password_confirmation => '1q2w3e4r',
+)
+
+user = User.find_or_create_by(email: 'boba_fett@empire.org')
+user.update_attributes(
+    :full_name => 'Boba Fett',
+    :password => '1q2w3e4r',
+    :password_confirmation => '1q2w3e4r',
 )
 
 
