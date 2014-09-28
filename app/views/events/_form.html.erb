@@ -14,8 +14,8 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :event_type %>
-    <%= f.select :event_type, EventType.all.collect {|a| [a.title, a.id]}, {}, class: 'form-control' %>
+    <%= f.label :event_type_id %>
+    <%= f.select :event_type_id, EventType.all.collect {|a| [a.title, a.id]}, {}, class: 'form-control' %>
   </div>
 
   <div class="form-group">
@@ -26,6 +26,18 @@
   <div class="form-group">
     <%= f.label :description %>
     <%= f.text_area :description, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :user, 'Assigned users' %>
+    <% User.all.each do |user|  %>
+      <div class="checkbox">
+        <label>
+          <%= check_box_tag "users[#{user.id}]" %>
+          <%= "#{user.full_name} (#{user.email})"%>
+        </label>
+      </div>
+    <% end %>
   </div>
 
   <%= f.submit nil, class: 'btn btn-default' %>
