@@ -10,9 +10,8 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(params.require(:event).permit(:name, :event_type_id, :due_date, :description))
+    @event = Event.new(event_params)
     if @event.save
-      @event.assign_users_by_ids(params.require(:users)) if params[:users]
       flash[:notice] = 'Event created'
       redirect_to root_path
     else
@@ -27,12 +26,8 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
-    if @event.update_attributes(params.require(:event).permit(:name, :event_type_id, :due_date, :description))
-      if params[:users]
-        @event.assign_users_by_ids(params.require(:users))
-      else
-        @event.remove_all_users
-      end
+
+    if @event.update_attributes(event_params)
       flash[:notice] = 'Event updated'
       redirect_to edit_event_path @event
     else
@@ -41,5 +36,11 @@ class EventsController < ApplicationController
     end
   end
 
+
+  private
+
+  def event_params
+    params.require(:event).permit(:name, :event_type_id, :due_date, :description, event_users_attributes: [:user_id, :id, :_destroy])
+  end
 
 end
