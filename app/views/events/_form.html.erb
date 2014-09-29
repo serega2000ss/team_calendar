@@ -32,7 +32,7 @@
     <%= label_tag :event_users, 'Assigned users' %>
     <%= f.fields_for :event_users do |ff| %>
       <div>
-        <%= ff.check_box :_destroy, { checked: ff.object.persisted? }, '0', '1' %>
+        <%= ff.check_box :_destroy, { checked: !ff.object.new_record? }, '0', '1' %>
         <%= ff.label :_destroy, ff.object.user.full_name %>
         <%= ff.hidden_field :user_id %>
       </div>
