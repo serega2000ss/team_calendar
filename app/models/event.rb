@@ -22,4 +22,14 @@ class Event < ActiveRecord::Base
   validates :name, :due_date, presence: true
 
   scope :ordered, -> { order(:due_date) }
+
+
+  def shorten_description(words_number = 20)
+    if self.description.split(" ").size <= words_number
+      self.description
+    else
+      "#{self.description.split(" ").first(words_number).join(" ")}..."
+    end
+  end
+
 end

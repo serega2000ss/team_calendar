@@ -3,7 +3,7 @@
     <dt><%= event.due_date.to_formatted_s(:long) %></dt>
     <dd>
       <%= link_to "#{event.event_type.title}: #{event.name}", event_path(event) %>
-      <p><%= event.description %></p>
+      <p><%= event.shorten_description %></p>
     </dd>
   <% end %>
 </dl>

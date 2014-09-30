@@ -13,7 +13,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     if @event.save
       flash[:notice] = 'Event created'
-      redirect_to root_path
+      redirect_to event_path @event
     else
       flash[:danger] = "Can't create Event due to some errors!"
       render action: :new
@@ -29,13 +29,16 @@ class EventsController < ApplicationController
 
     if @event.update_attributes(event_params)
       flash[:notice] = 'Event updated'
-      redirect_to edit_event_path @event
+      redirect_to event_path @event
     else
       flash[:danger] = "Can't update Event due to some errors!"
       render action: :edit
     end
   end
 
+  def show
+    @event = Event.find(params[:id])
+  end
 
   private
 

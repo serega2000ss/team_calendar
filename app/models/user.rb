@@ -27,4 +27,6 @@ class User < ActiveRecord::Base
 
   has_many :event_users, dependent: :destroy
   has_many :events, through: :event_users
+
+  scope :ordered, -> { order(:full_name) }
 end

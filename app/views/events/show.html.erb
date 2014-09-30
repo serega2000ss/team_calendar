@@ -1,0 +1,15 @@
+<h2><%= @event.event_type.title %> <%= @event.name %></h2>
+
+<h4><strong>Due date:</strong> <%= @event.due_date.to_formatted_s(:long) %></h4>
+<p><%= @event.description %></p>
+
+<br/>
+<strong>Participants:</strong>
+<ul class="list-unstyled">
+  <% @event.users.ordered.each do |user|  %>
+    <li><%= user.full_name %></li>
+  <% end %>
+</ul>
+
+<hr/>
+<%= link_to 'Edit', edit_event_path(@event), class: 'btn btn-primary btn-sm' %>
