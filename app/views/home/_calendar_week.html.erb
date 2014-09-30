@@ -1,0 +1,17 @@
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#calendar_week').fullCalendar({
+      defaultView: 'basicWeek',
+      events: [
+        <% events.each do |event|  %>
+        {
+          title: '<%= event.name %> (<%= event.event_type.title %>)',
+          start: new Date('<%= event.due_date %>'),
+          url: '<%= event_path event %>'
+        },
+        <%end%>
+      ]
+    });
+  });
+</script>
+<div id="calendar_week"></div>

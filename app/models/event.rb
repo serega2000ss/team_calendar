@@ -20,4 +20,6 @@ class Event < ActiveRecord::Base
   accepts_nested_attributes_for :event_users, allow_destroy: true
 
   validates :name, :due_date, presence: true
+
+  scope :ordered, -> { order(:due_date) }
 end

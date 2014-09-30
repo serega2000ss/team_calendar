@@ -15,4 +15,5 @@
 /log/*.log
 /tmp
 .idea/
-.rvmrc
+.ruby-gemset
+.ruby-version

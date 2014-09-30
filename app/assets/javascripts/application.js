@@ -15,4 +15,6 @@
 //= require twitter/bootstrap
 //= require bootstrap-datepicker
 //= require turbolinks
+//= require fullcalendar
+//= require moment
 //= require_tree .
