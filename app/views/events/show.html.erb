@@ -7,7 +7,7 @@
 <strong>Participants:</strong>
 <ul class="list-unstyled">
   <% @event.users.ordered.each do |user|  %>
-    <li><%= user.full_name %></li>
+    <li><%= link_to user.full_name, team_path(user) %></li>
   <% end %>
 </ul>
 

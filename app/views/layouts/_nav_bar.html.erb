@@ -2,6 +2,10 @@
   <div class="container-fluid">
     <ul class="nav navbar-nav navbar-left">
       <li class="<%= 'active' if (controller_name == 'home') %>"><%= link_to 'Home', root_path %></li>
+      <% if user_signed_in? %>
+        <li><%= link_to 'Team', team_index_path %></li>
+        <li><%= link_to 'My events', events_team_path(current_user) %></li>
+      <% end %>
     </ul>
 
     <ul class="nav navbar-nav navbar-right">

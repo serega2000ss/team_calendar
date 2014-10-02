@@ -2,9 +2,17 @@ Rails.application.routes.draw do
   devise_for :users
   root 'home#index'
 
-  get '/(:active_tab)' => 'home#index', as: :homepage
-
   resources :events
+
+  resources :team, only: [:index, :show] do
+    member do
+      get 'events'
+    end
+  end
+
+  #custom routes
+  get '/(:active_tab)' => 'home#index', as: :homepage
+  get '/team/:id/events/(:active_tab)' => 'team#events', as: :user_events
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

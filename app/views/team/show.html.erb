@@ -1,0 +1,17 @@
+<h2>User detail</h2>
+
+<dl>
+  <dt>Full name:</dt>
+  <dd><%= @user.full_name %></dd>
+
+  <dt>Email:</dt>
+  <dd><%= @user.email %></dd>
+
+  <dt>Admin:</dt>
+  <dd><%= @user.admin?.to_s %></dd>
+
+  <dt>Number of events:</dt>
+  <dd><%= @user.events.size %> <%= link_to 'Show', events_team_path(@user), class: 'btn btn-default btn-xs' %></dd>
+</dl>
+
+

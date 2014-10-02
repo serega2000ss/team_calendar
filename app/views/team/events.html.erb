@@ -1,0 +1,12 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <ul class="nav nav-tabs" role="tablist">
+      <% [:month, :week, :agenda].each do |tab| %>
+        <li class="<%= 'active' if (@active_tab == tab.to_s) %>"><%= link_to tab.to_s.capitalize, user_events_path(id: @user.id, active_tab: tab)%></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="panel-footer">
+    <%= render "home/calendar_#{@active_tab}", events: @user.events %>
+  </div>
+</div>
