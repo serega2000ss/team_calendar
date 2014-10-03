@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_filter :authenticate_user!
+  before_action :fetch_event, only: [:edit, :update, :show, :log]
 
   def index
     @events = Event.all
@@ -21,12 +22,9 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.find(params[:id])
   end
 
   def update
-    @event = Event.find(params[:id])
-
     if @event.update_attributes(event_params)
       flash[:notice] = 'Event updated'
       redirect_to event_path @event
@@ -37,10 +35,17 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
   end
 
+  def log
+  end
+
+
   private
+
+  def fetch_event
+    @event = Event.find(params[:id])
+  end
 
   def event_params
     params.require(:event).permit(:name, :event_type_id, :due_date, :description, event_users_attributes: [:user_id, :id, :_destroy])

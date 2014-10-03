@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   root 'home#index'
 
-  resources :events
+  resources :events do
+    member do
+      get 'log'
+    end
+  end
 
   resources :team, only: [:index, :show] do
     member do

@@ -1,3 +1,9 @@
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.datepicker').datepicker({format: 'yyyy-mm-dd'});
+  });
+</script>
+
 <% if event.errors.any? %>
   <p class="text-danger">Please fix all errors to proceed</p>
   <ul class="errors">

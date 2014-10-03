@@ -21,6 +21,8 @@ class Event < ActiveRecord::Base
 
   validates :name, :due_date, presence: true
 
+  has_paper_trail class_name: 'Version'
+
   scope :ordered, -> { order(:due_date) }
 
 

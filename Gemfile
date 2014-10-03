@@ -31,6 +31,7 @@ gem 'bootstrap-datepicker-rails', '~> 1.3.0.2'
 
 gem 'momentjs-rails', '~> 2.8.3'
 gem 'fullcalendar-rails', '~> 1.6.4.0'
+gem 'paper_trail', '~> 3.0.5'
 
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring

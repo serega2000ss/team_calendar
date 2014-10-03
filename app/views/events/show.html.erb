@@ -1,7 +1,7 @@
 <h2><%= @event.event_type.title %> <%= @event.name %></h2>
 
 <h4><strong>Due date:</strong> <%= @event.due_date.to_formatted_s(:long) %></h4>
-<p><%= @event.description %></p>
+<p><%= simple_format @event.description %></p>
 
 <br/>
 <strong>Participants:</strong>
@@ -10,6 +10,9 @@
     <li><%= link_to user.full_name, team_path(user) %></li>
   <% end %>
 </ul>
+
+<strong>Change log:</strong><%= link_to 'log', log_event_path(@event) %>
+
 
 <hr/>
 <%= link_to 'Edit', edit_event_path(@event), class: 'btn btn-primary btn-sm' %>
