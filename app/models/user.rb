@@ -31,4 +31,9 @@ class User < ActiveRecord::Base
   has_many :editions, foreign_key: 'whodunnit', class_name: "Version"
 
   scope :ordered, -> { order(:full_name) }
+
+  def event_sum(event)
+    Version.where(whodunnit: self.id.to_s, item_id: event.id)
+  end
+
 end

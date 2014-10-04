@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_filter :authenticate_user!
-  before_action :fetch_event, only: [:edit, :update, :show, :log]
+  before_action :fetch_event, only: [:edit, :update, :show, :log, :sum]
 
   def index
     @events = Event.all
@@ -38,6 +38,10 @@ class EventsController < ApplicationController
   end
 
   def log
+  end
+
+  def sum
+    @user = User.find(params[:user_id])
   end
 
 

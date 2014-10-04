@@ -1,0 +1,6 @@
+<h2><%= @user.full_name %> <%= @event.event_type.title %> <%= @event.name %> Sum</h2>
+
+<%= render 'events/change_log', versions: @user.event_sum(@event) %>
+
+<hr/>
+<%= link_to 'Back', event_path(@event), class: 'btn btn-primary btn-sm' %>

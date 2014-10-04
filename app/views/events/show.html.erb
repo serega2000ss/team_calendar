@@ -7,11 +7,14 @@
 <strong>Participants:</strong>
 <ul class="list-unstyled">
   <% @event.users.ordered.each do |user|  %>
-    <li><%= link_to user.full_name, team_path(user) %></li>
+    <li>
+      <%= link_to user.full_name, team_path(user) %>
+      <%= link_to 'Sum', event_user_sum_path(@event, user_id: user.id), class: 'btn btn-default btn-xs' %>
+    </li>
   <% end %>
 </ul>
 
-<strong>Change log:</strong><%= link_to 'log', log_event_path(@event) %>
+<strong>Event log:</strong> <%= link_to 'Show', log_event_path(@event), class: 'btn btn-default btn-xs' %>
 
 
 <hr/>

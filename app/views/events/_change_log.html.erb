@@ -1,23 +1,27 @@
-<ul class="list-unstyled">
-  <% versions.each do |event_version| %>
-    <li>
-      <%= event_version.created_at.to_formatted_s(:long) %>:&nbsp;
+<% if versions.size > 0 %>
+  <ul class="list-unstyled">
+    <% versions.each do |event_version| %>
+      <li>
+        <%= event_version.created_at.to_formatted_s(:long) %>:&nbsp;
 
-      <%= link_to event_version.calendar_event.name, event_path(event_version.calendar_event) %>
-      <strong><%= event_version.event %></strong> by
-      <%= link_to event_version.user.full_name, team_path(event_version.user) %>
-      <br/>
+        <%= link_to event_version.calendar_event.name, event_path(event_version.calendar_event) %>
+        <strong><%= event_version.event %></strong> by
+        <%= link_to event_version.user.full_name, team_path(event_version.user) %>
+        <br/>
 
-      <strong>Changes:</strong>
-      <div class="well">
-        <dl>
-          <% event_version.changeset.each_pair do |field, changes| %>
-            <dt><%= field %></dt>
-            <dd><%= changes.last %></dd>
-          <% end %>
-        </dl>
-      </div>
+        <strong>Changes:</strong>
+        <div class="well">
+          <dl>
+            <% event_version.changeset.each_pair do |field, changes| %>
+              <dt><%= field %></dt>
+              <dd><%= changes.last %></dd>
+            <% end %>
+          </dl>
+        </div>
 
-    </li>
-  <% end %>
-</ul>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <div class="alert alert-info" role="alert">No log information</div>
+<% end %>
