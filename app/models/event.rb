@@ -21,7 +21,7 @@ class Event < ActiveRecord::Base
 
   validates :name, :due_date, presence: true
 
-  has_paper_trail class_name: 'Version', :ignore => [:created_at, :updated_at]
+  has_paper_trail class_name: 'Version', :ignore => [:id, :created_at, :updated_at]
 
   scope :ordered, -> { order(:due_date) }
 

@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_filter :authenticate_user!
-  before_action :fetch_event, only: [:edit, :update, :show, :log, :sum]
+  before_filter :authenticate_admin!, only: [:new, :destroy]
+  before_action :fetch_event, only: [:edit, :update, :show, :destroy, :log, :sum]
 
   def index
     @events = Event.all
@@ -37,6 +38,12 @@ class EventsController < ApplicationController
   def show
   end
 
+  def destroy
+    @event.destroy
+    flash[:notice] = 'Event removed'
+    redirect_to root_path
+  end
+
   def log
   end
 
@@ -52,7 +59,18 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :event_type_id, :due_date, :description, event_users_attributes: [:user_id, :id, :_destroy])
+    if current_user.admin?
+      params.require(:event).permit(:name, :event_type_id, :due_date, :description, event_users_attributes: [:user_id, :id, :_destroy])
+    else
+      params.require(:event).permit(:name, :event_type_id, :due_date, :description)
+    end
+  end
+
+  def authenticate_admin!
+    unless current_user.admin?
+      flash[:danger] = "Yuo don't have permissions to perform this action!"
+      redirect_to root_path
+    end
   end
 
 end
