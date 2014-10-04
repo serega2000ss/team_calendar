@@ -1,0 +1,6 @@
+<h2><%= @user.full_name %> Activities</h2>
+
+<%= render 'events/change_log', versions: @user.editions %>
+
+<hr/>
+<%= link_to 'Back', team_path(@user), class: 'btn btn-primary btn-sm' %>

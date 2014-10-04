@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :team, only: [:index, :show] do
     member do
       get 'events'
+      get 'activities'
     end
   end
 
