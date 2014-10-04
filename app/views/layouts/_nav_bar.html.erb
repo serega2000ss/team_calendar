@@ -3,18 +3,16 @@
     <ul class="nav navbar-nav navbar-left">
       <li class="<%= 'active' if (controller_name == 'home') %>"><%= link_to 'Home', root_path %></li>
       <% if user_signed_in? %>
-        <li><%= link_to 'Team', team_index_path %></li>
-        <li><%= link_to 'My events', events_team_path(current_user) %></li>
+        <li class="<%= 'active' if (controller_name == 'team') %>"><%= link_to 'Team', team_index_path %></li>
       <% end %>
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
-
+        <li><%= link_to 'My events', events_team_path(current_user) %></li>
         <% if current_user.admin? %>
           <li class="<%= 'active' if current_page?(controller: 'events', action: 'new') %>"><%= link_to 'New event', new_event_path %></li>
         <% end %>
-
         <li class="<%= 'active' if current_page?(edit_user_registration_path) %>"><%= link_to current_user.email, edit_user_registration_path %></li>
         <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
       <% else %>
