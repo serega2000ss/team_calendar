@@ -8,7 +8,7 @@
 <ul class="list-unstyled">
   <% @event.users.ordered.each do |user|  %>
     <li>
-      <%= link_to user.full_name, team_path(user) %>
+      <%= link_to user.display_name, team_path(user) %>
       <%= link_to 'Sum', event_user_sum_path(@event, user_id: user.id), class: 'btn btn-default btn-xs' %>
     </li>
   <% end %>

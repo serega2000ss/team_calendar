@@ -6,7 +6,7 @@
 
         <%= link_to event_version.calendar_event.name, event_path(event_version.calendar_event) %>
         <strong><%= event_version.event %></strong> by
-        <%= link_to event_version.user.full_name, team_path(event_version.user) %>
+        <%= link_to event_version.user.display_name, team_path(event_version.user) %>
         <br/>
 
         <strong>Changes:</strong>

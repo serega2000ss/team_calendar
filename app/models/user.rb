@@ -32,6 +32,11 @@ class User < ActiveRecord::Base
 
   scope :ordered, -> { order(:full_name) }
 
+
+  def display_name
+    self.full_name.blank?? self.email : self.full_name
+  end
+
   def event_sum(event)
     Version.where(whodunnit: self.id.to_s, item_id: event.id)
   end
