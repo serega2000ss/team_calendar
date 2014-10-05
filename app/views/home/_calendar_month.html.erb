@@ -5,7 +5,7 @@
       events: [
         <% events.each do |event|  %>
           {
-            title: '<%= event.name %> (<%= event.event_type.title %>)',
+            title: '<%= event.title %>',
             start: new Date('<%= event.due_date %>'),
             url: '<%= event_path event %>'
           },

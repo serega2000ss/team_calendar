@@ -29,6 +29,10 @@ class Event < ActiveRecord::Base
   scope :ordered, -> { order(:due_date) }
 
 
+  def title
+    "#{self.event_type.title} - #{self.name}"
+  end
+
   def shorten_description(words_number = 20)
     if self.description.split(" ").size <= words_number
       self.description

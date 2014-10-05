@@ -1,4 +1,4 @@
-<h2><%= @event.event_type.title %> <%= @event.name %></h2>
+<h2><%= @event.title %></h2>
 
 <h4><strong>Due date:</strong> <%= @event.due_date.to_formatted_s(:long) %></h4>
 <p><%= simple_format @event.description %></p>
