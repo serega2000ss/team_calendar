@@ -20,6 +20,9 @@ class Event < ActiveRecord::Base
   accepts_nested_attributes_for :event_users, allow_destroy: true
 
   validates :name, :due_date, presence: true
+  validate do
+    check_assigned_users
+  end
 
   has_paper_trail class_name: 'Version', :ignore => [:id, :created_at, :updated_at]
 
@@ -31,6 +34,15 @@ class Event < ActiveRecord::Base
       self.description
     else
       "#{self.description.split(" ").first(words_number).join(" ")}..."
+    end
+  end
+
+
+  private
+
+  def check_assigned_users
+    if self.event_users.reject(&:marked_for_destruction?).count == 0
+      errors.add(:base, "At least one user should be assigned")
     end
   end
 
